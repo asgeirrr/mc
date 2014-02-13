@@ -276,6 +276,7 @@ create_command_menu (void)
      */
     GList *entries = NULL;
 
+    entries = g_list_prepend (entries, menu_entry_create (_("&Test"), CK_Test));
     entries = g_list_prepend (entries, menu_entry_create (_("&User menu"), CK_UserMenu));
     entries = g_list_prepend (entries, menu_entry_create (_("&Directory tree"), CK_Tree));
     entries = g_list_prepend (entries, menu_entry_create (_("&Find file"), CK_Find));
@@ -1384,6 +1385,9 @@ midnight_execute_cmd (Widget * sender, unsigned long command)
     case CK_UserMenu:
         user_file_menu_cmd ();
         break;
+    case CK_Test:
+        test_command ();
+        break;
     case CK_View:
         view_cmd ();
         break;
@@ -1801,4 +1805,10 @@ do_nc (void)
     return ret;
 }
 
+/** Test command by Oskar Hollmann.
+ * 
+ */
+void test_command(void) {
+  query_dialog (_("Test command"), _("by Oskar Hollmann"), D_NORMAL, 2, _("&Yes"), _("&No"));
+}
 /* --------------------------------------------------------------------------------------------- */
