@@ -2,7 +2,7 @@
    Widgets for the Midnight Commander
 
    Copyright (C) 1994-2014
-   The Free Software Foundation, Inc.
+   Free Software Foundation, Inc.
 
    Authors:
    Radek Doulik, 1994, 1995
@@ -353,7 +353,10 @@ static inline void
 listbox_append_item (WListbox * l, WLEntry * e, listbox_append_t pos)
 {
     if (l->list == NULL)
+    {
         l->list = g_queue_new ();
+        pos = LISTBOX_APPEND_AT_END;
+    }
 
     switch (pos)
     {
